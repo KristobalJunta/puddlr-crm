@@ -1,0 +1,116 @@
+$hamburger-color: black;
+
+.nav-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 10px 0;
+
+    &-menu {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        width: 100%;
+
+        a {
+            // font: 14px '';
+            text-transform: uppercase;
+            color: #262626;
+            text-decoration: none;
+        }
+    }
+
+    &__hamburger{
+        height: 32px;
+        width: 32px;
+        display: none;
+
+        transition: all .3s ease-in-out;
+
+        svg{
+            height: 32px;
+            width: 32px;
+            fill: $hamburger-color;
+
+            transition: all .3s ease-in-out;
+
+            & rect{
+                transition: all .3s ease-in-out;
+            }
+        }
+
+        &.active{
+
+            & rect:nth-child(1){
+                transform: rotateZ(-45deg);
+                transform-origin: 16px 16px;
+                position: relative;
+                y: 14px;
+            }
+            & rect:nth-child(2){
+                transform: rotateZ(45deg);
+                transform-origin: 16px 16px;
+            }
+            & rect:nth-child(3){
+                transform: rotateZ(-45deg);
+                transform-origin: 16px 16px;
+                position: relative;
+                y: 14px;
+            }
+        }
+    }
+
+    #nav__hamburger{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .nav-list__hamburger{
+        display: inline-block;
+    }
+
+    .nav-list {
+        position: absolute;
+        top: calc(50% - 27px);
+        left: -21px;
+        width: calc(100vw - 40px);
+        box-sizing: border-box;
+        padding: 0 20px;
+        justify-content: flex-end;
+    }
+
+    .nav-list-menu {
+        transition: all .3s, opacity .3s ease-in-out .1s;
+        opacity: 0;
+        visibility: hidden;
+
+        height: initial;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        position: absolute;
+        right: 0;
+        top: 60px;
+
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 10;
+        padding: 60px 20px;
+
+        a{
+            margin: 20px auto;
+        }
+    }
+
+    #nav__hamburger:checked ~ .nav-list-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}

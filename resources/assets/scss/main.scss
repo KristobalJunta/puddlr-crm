@@ -1,0 +1,9 @@
+@import 'blocks/header';
+
+body {
+    background: #fff;
+
+    &.disable-hover {
+        pointer-events: none;
+    }
+}

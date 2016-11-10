@@ -1,0 +1,9 @@
+@import "nav-list";
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}

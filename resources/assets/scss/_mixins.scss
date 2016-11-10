@@ -1,0 +1,15 @@
+@mixin section {
+    box-sizing: border-box;
+    max-width: 960px;
+    width: calc(100% - 40px);
+    margin: auto;
+}
+
+@mixin button-reset {
+    outline: none;
+    border: none;
+    background: none;
+    display: block;
+    cursor: pointer;
+}
+
