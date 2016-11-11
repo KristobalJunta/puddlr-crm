@@ -20,9 +20,4 @@ class Role extends Model
     {
         return $this->hasMany('App\TaksTemplate');
     }
-
-    public function tasks()
-    {
-        return $this->hasMany('App\Task');
-    }
 }

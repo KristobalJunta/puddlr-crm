@@ -21,7 +21,7 @@ class User extends Authenticatable
         'username',
         'avatar',
         'priority',
-        'role_id',
+        'user_id',
         'team_id',
     ];
 
@@ -37,6 +37,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo('App\Role');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
     }
 
     public function time_intervals()
