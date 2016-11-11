@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('time_expected')->unsigned();
-            $table->integer('time_actual')->unsigned();
+            $table->integer('time_actual')->unsigned()->default(0);
             $table->integer('role_id')->unsigned()->nullable();
             $table->integer('status_id')->unsigned();
             $table->timestamps();
