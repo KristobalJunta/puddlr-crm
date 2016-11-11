@@ -17,4 +17,9 @@ class Project extends Model
     {
         return $this->belongsTo('App\ProjectTemplate');
     }
+
+    public function team()
+    {
+        return $this->project_template->team;
+    }
 }
