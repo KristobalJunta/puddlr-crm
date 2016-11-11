@@ -9,7 +9,6 @@
 @endsection
 
 @section('main')
-    @include('blocks.header')
 
 @endsection
 

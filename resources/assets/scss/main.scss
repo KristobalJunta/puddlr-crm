@@ -1,9 +1,26 @@
-@import 'blocks/header';
+@import 'variables';
+@import 'mixins';
+
+@import 'blocks/login';
 
 body {
-    background: #fff;
+    background: linear-gradient(to top right, #db695c, #f7ad37);
+
+    box-sizing: border-box;
+    min-height: 100vh;
 
     &.disable-hover {
         pointer-events: none;
     }
+}
+
+.site-title {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+    text-align: center;
+    font: 25vw HumansLight;
+    color: rgba(255,255,255,.2);
+    text-transform: uppercase;
+    margin: 0 auto;
 }

@@ -20,19 +20,11 @@
   ],
   "dependencies": {
     "jquery": "^2.2.3",
-    "normalize-css": "^4.1.1",
-    "ResponsiveSlides": "*",
-    "jquery.maskedinput": "^1.4.1"
+    "normalize-css": "^4.1.1"
   },
   "overrides": {
     "jquery": {
       "main": "dist/jquery.min.js"
-    },
-    "ResponsiveSlides": {
-      "main": [
-        "responsiveslides.min.js",
-        "responsiveslides.css"
-      ]
     }
   }
 }
