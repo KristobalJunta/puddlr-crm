@@ -20,4 +20,9 @@ class Team extends Model
     {
         return $this->hasMany('App\ProjectTemplate');
     }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'avatar',
         'priority',
         'role_id',
+        'team_id',
     ];
 
     /**
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function quotas()
     {
         return $this->hasMany('App\Quota');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
     }
 }
