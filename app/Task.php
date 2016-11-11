@@ -13,5 +13,26 @@ class Task extends Model
         'time_actual',
         'role_id',
         'status_id',
+        'project_id'
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Status');
+    }
+
+    public function time_intervals()
+    {
+        return $this->hasMany('App\TimeInterval');
+    }
+
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
 }

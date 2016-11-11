@@ -12,4 +12,9 @@ class Project extends Model
         'description',
         'project_template_id',
     ];
+
+    public function project_template()
+    {
+        return $this->belongsTo('App\ProjectTemplate');
+    }
 }

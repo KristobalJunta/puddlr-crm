@@ -32,4 +32,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    public function time_intervals()
+    {
+        return $this->hasMany('App\TimeInterval');
+    }
+
+    public function quotas()
+    {
+        return $this->hasMany('App\Quota');
+    }
 }

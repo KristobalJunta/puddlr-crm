@@ -10,4 +10,14 @@ class Team extends Model
         'name',
         'slug',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany('App\Project');
+    }
+
+    public function project_templates()
+    {
+        return $this->hasMany('App\ProjectTemplate');
+    }
 }

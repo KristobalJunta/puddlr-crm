@@ -11,4 +11,9 @@ class ProjectTemplate extends Model
         'description',
         'team_id',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
+    }
 }
