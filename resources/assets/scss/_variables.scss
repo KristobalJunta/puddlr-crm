@@ -1,11 +1,16 @@
 /* Fonts */
 
-// @font-face {
-//     font-family: 'AzoftSans';
-//     src: url(/fonts/AzoftSansRegular.ttf);
-// }
+@font-face {
+    font-family: 'HumansLight';
+    src: url(/fonts/HumansLight.ttf);
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url(/fonts/OpenSans.ttf);
+}
 
 
 /* Variables */
 
-// $orange: #e8870e;
+$pink: #dc6c5a;

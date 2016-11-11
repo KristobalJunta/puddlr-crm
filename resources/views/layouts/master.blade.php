@@ -10,7 +10,6 @@
             @show
         </title>
 
-
         <link rel="stylesheet" href="/css/vendor/normalize.css">
         {{-- <link rel="stylesheet" href="/css/vendor/responsiveslides.css" charset="utf-8"> --}}
         <link rel="stylesheet" href="/css/main.min.css">
@@ -29,7 +28,7 @@
 
         @section('scripts')
             <script src="/js/vendor/jquery.min.js"></script>
-            <script src="/js/vendor/jquery.maskedinput.js"></script>
+            {{-- <script src="/js/vendor/jquery.maskedinput.js"></script> --}}
 
             {{-- <script src="//static.liqpay.com/libjs/checkout.js" async></script> --}}
             {{-- <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script> --}}

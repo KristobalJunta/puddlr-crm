@@ -1,0 +1,122 @@
+.login {
+
+    &-title {
+        font: 7vw HumansLight;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 85px auto 140px;
+        text-align: center;
+    }
+
+    &-form {
+        background: #fff;
+        border-radius: 7px 7px 0 0;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-flow: row wrap;
+
+        box-shadow: 0px 0px 7px rgba(0,0,0,.35);
+        z-index: 1;
+
+        border-bottom: 1px #373737;
+
+        &-container {
+            position: relative;
+            width: 460px;
+            max-width: calc(100% - 40px);
+            margin: auto;
+        }
+
+        &__logo {
+            position: absolute;
+            bottom: calc(100% - 30px);
+            height: 100px;
+            width: 120px;
+
+            left: calc(50% - 60px);
+        }
+
+        &__title {
+            font: 14px OpenSans;
+            color: #373737;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+
+            margin: 20px auto 40px;
+        }
+
+        &-inputs {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                width: 250px;
+                color: #373737;
+                margin:  0 auto 20px;
+
+                a {
+                    color: #373737;
+                }
+            }
+
+            @media (max-width: 768px) {
+                justify-content: space-around;
+            }
+        }
+
+        &-input {
+            height: 40px;
+            width: 200px;
+            padding: 0 20px;
+            max-width: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none;
+            background: none;
+            border: 1px solid $pink;
+            margin-bottom: 20px;
+            color: $pink;
+
+            &_name {
+                width: 160px;
+            }
+        }
+
+        &__in {
+            background: none;
+            border: none;
+            color: $pink;
+            border-bottom: 1px dashed $pink;
+            font: 16px OpenSans;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        &-footer {
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-flow:  row wrap;
+            color: #373737;
+            background: #fff;
+            border-radius: 0 0 7px 7px;
+
+            a {
+                color: $pink;
+                text-transform: uppercase;
+                font: 14px OpenSans;
+                border-bottom: 1px dashed $pink;
+                text-decoration: none;
+                margin: 0 20px;
+            }
+        }
+    }
+}
