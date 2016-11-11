@@ -56,7 +56,7 @@ class TaskSeeder extends Seeder
             'name' => 'База данных',
             'description' => 'Спроекитровать БД для проекта',
             'time_expected' => 7200,
-            'role_id' => $backEnd->id,
+            'user_id' => $backEnd->id,
             'project_id' => $project->id,
             'status_id' => $status->id,
         ]);
@@ -65,7 +65,7 @@ class TaskSeeder extends Seeder
             'name' => 'Запросы',
             'description' => 'Написать запросы к БД',
             'time_expected' => 5400,
-            'role_id' => $backEnd->id,
+            'user_id' => $backEnd->id,
             'project_id' => $project->id,
             'status_id' => $status->id,
         ]);

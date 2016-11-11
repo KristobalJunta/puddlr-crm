@@ -22,4 +22,9 @@ class Project extends Model
     {
         return $this->project_template->team;
     }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
 }

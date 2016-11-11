@@ -16,4 +16,9 @@ class ProjectTemplate extends Model
     {
         return $this->belongsTo('App\Team');
     }
+
+    public function task_templates()
+    {
+        return $this->hasMany('App\TaskTemplate');
+    }
 }

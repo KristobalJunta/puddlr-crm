@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::post('/test', function (Request $request) {
+    // dd($request->all());
+    foreach($request->get('quotas') as $user_id => $quota) {
+        echo "$user_id - $quota\n";
+    }
+});

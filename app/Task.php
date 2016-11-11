@@ -13,7 +13,8 @@ class Task extends Model
         'time_actual',
         'user_id',
         'status_id',
-        'project_id'
+        'project_id',
+        'task_template_id',
     ];
 
     public function user()

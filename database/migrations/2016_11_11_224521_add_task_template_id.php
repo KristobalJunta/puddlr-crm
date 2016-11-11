@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeTaskRoleToUser extends Migration
+class AddTaskTemplateId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,9 @@ class ChangeTaskRoleToUser extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->dropForeign('tasks_role_id_foreign');
-            $table->dropColumn('role_id');
-
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->integer('task_template_id')->unsigned()->nullable();
+            $table->foreign('task_template_id')
+                ->references('id')->on('task_templates')
                 ->onDelete('restrict');
         });
     }
@@ -32,10 +29,8 @@ class ChangeTaskRoleToUser extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('role_id')->unsigned()->nullable();
-            $table->foreign('role_id')
-                ->references('id')->on('roles')
-                ->onDelete('restrict');
+            $table->dropForeign('tasks_task_template_id_foreign');
+            $table->dropColumn('task_template_id');
         });
     }
 }
