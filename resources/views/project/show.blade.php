@@ -44,6 +44,17 @@
                             @endforeach
                         </select>
 
+                        <div class="task-footer-timer" data-time="{{ $task->time_actual }}" data-id="{{ $task->id }}">
+                            <div class="task-footer-timer__current">
+                                {{ date("H:i:s", mktime(0, 0, $task->time_actual)) }}
+                            </div>
+                            из
+                            <div class="task-footer-timer__of">
+                                {{ date("H:i:s", mktime(0, 0, $task->time_expected)) }}
+                            </div>
+                             час
+                        </div>
+
                         <a class="team-mate-edit" href="/app/{{ $team->slug }}/project/{{ $project->slug }}/task/{{ $task->id }}/edit">
                             Редактирование
                         </a>
