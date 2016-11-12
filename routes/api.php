@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('/task/update_time', 'TaskController@updateTime');
 Route::post('/user/swap', 'UserController@swapPriority');

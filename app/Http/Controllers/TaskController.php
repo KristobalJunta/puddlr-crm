@@ -142,4 +142,15 @@ class TaskController extends Controller
     {
         //
     }
+
+    public function updateTime(Request $request)
+    {
+        $task = Task::find($request->get('id'));
+        if (!$task) abort(404);
+        $task->time_actual = $request->get('time_actual');
+        $task->save();
+        return response()->json([
+            'status' => 'ok'
+        ]);
+    }
 }
