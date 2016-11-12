@@ -6,7 +6,7 @@
 
         <title>
             @section('title')
-
+                Puddlr
             @show
         </title>
 

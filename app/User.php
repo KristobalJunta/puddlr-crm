@@ -21,6 +21,8 @@ class User extends Authenticatable
         'username',
         'avatar',
         'priority',
+        'role_id',
+        'team_id',
     ];
 
     /**
