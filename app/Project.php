@@ -17,4 +17,14 @@ class Project extends Model
     {
         return $this->belongsTo('App\ProjectTemplate');
     }
+
+    public function team()
+    {
+        return $this->project_template->team;
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
 }

@@ -22,3 +22,5 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::resource('project', 'ProjectController', ['only' => 'store']);

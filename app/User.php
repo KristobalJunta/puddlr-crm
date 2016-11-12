@@ -21,7 +21,8 @@ class User extends Authenticatable
         'username',
         'avatar',
         'priority',
-        'role_id',
+        'user_id',
+        'team_id',
     ];
 
     /**
@@ -38,6 +39,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
+
     public function time_intervals()
     {
         return $this->hasMany('App\TimeInterval');
@@ -46,5 +52,10 @@ class User extends Authenticatable
     public function quotas()
     {
         return $this->hasMany('App\Quota');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
     }
 }

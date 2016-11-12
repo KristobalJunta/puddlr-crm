@@ -11,14 +11,15 @@ class Task extends Model
         'description',
         'time_expected',
         'time_actual',
-        'role_id',
+        'user_id',
         'status_id',
-        'project_id'
+        'project_id',
+        'task_template_id',
     ];
 
-    public function role()
+    public function user()
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\User');
     }
 
     public function status()
