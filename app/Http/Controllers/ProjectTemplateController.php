@@ -39,7 +39,7 @@ class ProjectTemplateController extends Controller
         $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
-        ProjectTemplate::create([
+        $template = ProjectTemplate::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'team_id' => $team->id,

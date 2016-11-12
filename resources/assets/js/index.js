@@ -57,6 +57,10 @@ export default class App {
             });
             return false;
         });
+
+        $('.template-add').on('click', function() {
+            modals.open('.modal-add');
+        });
     }
 }
 

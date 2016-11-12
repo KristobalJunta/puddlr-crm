@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal modal-add">
     <div class="modal-bg"></div>
     <div class="modal-content">
         <div class="template-new">
@@ -7,6 +7,7 @@
             </div>
 
             <form action="/app/{{ $team->slug }}/template" method="POST">
+                {!! csrf_field() !!}
                 <input type="text"
                     class="template-new__title"
                     placeholder="Промо-страница" name="name">
@@ -19,7 +20,7 @@
                     <a href="#" class="template-new__button template-new__button_back">
                         отмена
                     </a>
-                    <button type="button" name="button" class="template-new__button_ok">
+                    <button type="submit" name="submit" class="template-new__button_ok">
                         сохранить
                     </button>
                 </div>
