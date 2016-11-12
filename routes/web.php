@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('{team}/template', 'ProjectTemplateController@store');
         Route::get('{team}/template/{template}', 'ProjectTemplateController@show');
         // Route::post('{team}/template/{template}/task', 'TaskTemplateController@store');
+        Route::get('{team}/template/{id}/delete', 'ProjectTemplateController@delete');
 
         Route::resource('{team}/template/{template}/task', 'TaskTemplateController');
     });
