@@ -35,14 +35,14 @@ export default class App {
                 user2 = $(this).parents('.team-mate').prev().data('id');
             $.post({
                 url: `/api/user/swap`,
-                dataType: json,
+                dataType: 'json',
                 data: {
                     id1: user1,
                     id2: user2
                 }
             }).done((r) => {
                 console.log(r);
-                $(this).parents('.team-mate').insertBefore($(this).parents('.team-mate').next());
+                $(this).parents('.team-mate').insertBefore($(this).parents('.team-mate').prev());
             });
             return false;
         });

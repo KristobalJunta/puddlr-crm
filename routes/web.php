@@ -32,13 +32,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('{team}/projects', 'TeamController@projects');
         Route::get('{team}/project', 'ProjectController@show');
+        Route::post('{team}/project', 'ProjectController@store');
         Route::get('{team}/project/create', 'ProjectController@create');
         Route::get('{team}/project/{project}', 'ProjectController@show');
 
         Route::get('{team}/templates', 'TeamController@templates');
         Route::post('{team}/template', 'ProjectTemplateController@store');
         Route::get('{team}/template/{template}', 'ProjectTemplateController@show');
-
         Route::post('{team}/template/{template}/task', 'TaskTemplateController@store');
     });
 });

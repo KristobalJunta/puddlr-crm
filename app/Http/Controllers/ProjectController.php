@@ -32,8 +32,13 @@ class ProjectController extends Controller
         $team = Team::where('slug', $slug)->first();
         if (!$team) abort(404);
 
+        $templates = ProjectTemplate::all();
+        $users = $team->users;
+
         return view('project.create', [
             'team' => $team,
+            'templates' => $templates,
+            'users' => $users,
         ]);
     }
 
