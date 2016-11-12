@@ -27,9 +27,14 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($team, Request $request)
     {
-        //
+        $team = Team::where('slug', $slug)->first();
+        if (!$team) abort(404);
+
+        return view('project.create', [
+            'team' => $team,
+        ]);
     }
 
     /**
@@ -129,6 +134,8 @@ class ProjectController extends Controller
      */
     public function show($team, $project, Request $request)
     {
+        $team = Team::where('slug', $slug)->first();
+        if (!$team) abort(404);
         $project = Project::where('slug', $project)->first();
         if (!$project) {
             abort(404);
