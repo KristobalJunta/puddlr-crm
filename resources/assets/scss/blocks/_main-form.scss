@@ -1,4 +1,4 @@
-.login {
+.main {
 
     &-title {
         font: 7vw HumansLight;
@@ -65,6 +65,17 @@
                 }
             }
 
+            &_team {
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+
+                p {
+                    width: initial;
+                    margin: 0 10px 20px;
+                }
+            }
+
             @media (max-width: 768px) {
                 justify-content: space-around;
             }
@@ -86,9 +97,14 @@
             &_name {
                 width: 160px;
             }
+
+            &_team {
+                width: 165px;
+            }
         }
 
-        &__in {
+        &__in,
+        &__back {
             background: none;
             border: none;
             color: $pink;
@@ -98,6 +114,17 @@
             text-transform: uppercase;
         }
 
+        &__back {
+            color: #a7a7a7;
+        }
+
+        &__domain {
+            width: initial;
+            color: #373737;
+
+        }
+
+
         &-footer {
             padding: 20px 0;
             display: flex;
@@ -106,7 +133,7 @@
 
             flex-flow:  row wrap;
             color: #373737;
-            background: #fff;
+            background: #fbfaf9;
             border-radius: 0 0 7px 7px;
 
             a {
