@@ -91,10 +91,9 @@ class UserController extends Controller
         $domain = $request->get('domain');
         $team = Team::where('slug', $domain)->first();
         if (!$team) {
-            $request->session()->flash([
-                'status' => 'err',
-                'message' => 'Команда не существует'
-            ]);
+            $request->session()->flash('status', 'err');
+            $request->session()->flash('message', 'Команда не существует');
+
             return redirect('/register');
         }
 
@@ -145,10 +144,9 @@ class UserController extends Controller
         $team = Team::where('slug', $domain)->first();
 
         if ($team) {
-            $request->session()->flash([
-                'status' => 'err',
-                'message' => 'Команда уже существует'
-            ]);
+            $request->session()->flash('status', 'err');
+            $request->session()->flash('message', 'Команда уже существует');
+
             return redirect()->back();
         }
 
