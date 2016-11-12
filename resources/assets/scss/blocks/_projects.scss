@@ -145,6 +145,13 @@
 .project-form {
     background-color: #fff;
     padding: 10px 0;
+    margin: 0 auto;
+
+    &-wrap {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 0 0 7px 7px;
+    }
 
     &-user {
         width: 600px;
