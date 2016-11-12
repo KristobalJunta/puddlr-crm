@@ -126,10 +126,8 @@ class UserController extends Controller
             return redirect()->intended("/app/{$team->slug}");
         }
 
-        $request->session()->flash([
-            'status' => 'err',
-            'message' => 'Неправильные данные'
-        ]);
+        $request->session()->flash('status', 'err');
+        $request->session()->flash('message', 'Неправильные данные');
         return redirect()->back();
     }
 
@@ -164,7 +162,7 @@ class UserController extends Controller
             'username' => str_slug($request->get('name')),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
-            'avatar' => '/img/logo.png',
+            'avatar' => 'img/logo.png',
             'role_id' => $role->id,
             'team_id' => $team->id,
         ]);

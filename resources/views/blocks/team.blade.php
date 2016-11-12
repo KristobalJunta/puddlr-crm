@@ -1,28 +1,29 @@
 <section class="team">
+    @foreach($team->users as $member)
+        <div class="team-mate">
+            <div class="team-mate-order">
+                <div class="team-mate-order__up"></div>
+                <div class="team-mate-order__down"></div>
+            </div>
 
-    <div class="team-mate">
-        <div class="team-mate-order">
-            <div class="team-mate-order__up"></div>
-            <div class="team-mate-order__down"></div>
-        </div>
+            <div class="team-mate-name">
+                <img src="/{{ $member->avatar }}" alt="" class="team-mate-name__avatar">
+                {{ $member->name }}
+            </div>
 
-        <div class="team-mate-name">
-            <img src="/img/DSC_ava_mini.png" alt="" class="team-mate-name__avatar">
-            O. Gorlachov
-        </div>
+            <div class="team-mate-role">
+                {{ $member->role->name }}
+            </div>
 
-        <div class="team-mate-role">
-            Designer UX
-        </div>
+            <div class="team-mate-mail">
+                {{ $member->email }}
+            </div>
 
-        <div class="team-mate-mail">
-            o.gorlachov17@gmail.com
+            <div class="team-mate-edit">
+                Редактирование
+            </div>
         </div>
-
-        <div class="team-mate-edit">
-            Редактирование
-        </div>
-    </div>
+    @endforeach
 
     <div class="team-mate team-mate-add">
         <img src="/img/icon_plus.png" alt="">

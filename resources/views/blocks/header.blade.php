@@ -5,12 +5,14 @@
     </div>
 
     <nav class="nav">
-        <a href="" class="nav-link">проекты</a>
-        <a href="" class="nav-link">шаблоны</a>
-        <a href="" class="nav-link">управление командой</a>
-        <a href="" class="nav-link">
-            <img src="/img/DSC_ava_mini.png" alt="" class="nav-link__avatar">
-            O. Gorlachov
+        <a href="/app/{{ $team->slug }}/projects" class="nav-link">Проекты</a>
+        <a href="/app/{{ $team->slug }}/templates" class="nav-link">Шаблоны</a>
+        @if($user->role->slug == 'admin')
+            <a href="/app/{{ $team->slug }}/team" class="nav-link">Управление командой</a>
+        @endif
+        <a href="#" class="nav-link">
+            <img src="/{{ $user->avatar }}" alt="" class="nav-link__avatar">
+            {{ $user->name }}
         </a>
         <a href="/logout" class="nav-link nav-link__logout"></a>
     </nav>

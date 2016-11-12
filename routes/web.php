@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('project', 'ProjectController', ['only' => 'store']);
 
     Route::group(['prefix' => 'app'], function () {
+        Route::get('/', 'PageController@app');
         Route::get('{team}', 'TeamController@show');
         Route::get('{team}/team', 'TeamController@manage');
         Route::get('{team}/projects', 'TeamController@projects');

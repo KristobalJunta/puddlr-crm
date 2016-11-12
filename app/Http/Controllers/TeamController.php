@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
+use Auth;
 
 class TeamController extends Controller
 {
@@ -21,9 +22,11 @@ class TeamController extends Controller
         if (!$team) abort(404);
 
         $projects = $team->projects;
+        $user = Auth::user();
 
         return view('project.list', [
             'team' => $team,
+            'user' => $user,
             'projects' => $projects,
         ]);
     }
@@ -33,8 +36,15 @@ class TeamController extends Controller
         $team = Team::where('slug', $slug)->first();
         if (!$team) abort(404);
 
+        $user = Auth::user();
+
+        if (!($user->role->slug === 'admin')) {
+            abort(403);
+        }
+
         return view('team.manage', [
             'team' => $team,
+            'user' => $user,
         ]);
     }
 }

@@ -52,8 +52,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Quota');
     }
 
-    public function teams()
+    public function team()
     {
-        return $this->belongsToMany('App\Team');
+        return $this->belongsTo('App\Team');
     }
 }
