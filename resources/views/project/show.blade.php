@@ -33,10 +33,12 @@
                     </header>
 
                     <footer class="task-footer">
-                        <div class="task-footer-user">
-                            <img src="/{{ $task->user->avatar }}" alt="" class="nav-link__avatar">
-                            {{ $task->user->name }}
-                        </div>
+                        @if($task->user)
+                            <div class="task-footer-user">
+                                <img src="/{{ $task->user->avatar }}" alt="" class="nav-link__avatar">
+                                {{ $task->user->name }}
+                            </div>
+                        @endif
 
                         <select name="" id="" class="task-footer-state">
                             @foreach($statuses as $status)
