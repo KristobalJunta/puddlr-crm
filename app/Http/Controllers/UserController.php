@@ -176,10 +176,10 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function swapPriority($id1, $id2)
+    public function swapPriority(Request $request)
     {
-        $user1 = User::find($id1);
-        $user2 = User::find($id2);
+        $user1 = User::find($request->get('id1'));
+        $user2 = User::find($request->get('id2'));
 
         $t = $user1->priority;
         $user1->priority = $user2->priority;

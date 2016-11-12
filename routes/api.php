@@ -13,9 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/test', function (Request $request) {
-    // dd($request->all());
-    foreach($request->get('quotas') as $user_id => $quota) {
-        echo "$user_id - $quota\n";
-    }
-});
+Route::post('/user/swap', 'UserController@swapPriority');

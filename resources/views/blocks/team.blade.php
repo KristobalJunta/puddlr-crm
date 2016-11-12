@@ -1,6 +1,6 @@
 <section class="team">
-    @foreach($team->users as $member)
-        <div class="team-mate">
+    @foreach($team->users()->orderBy('priority')->get() as $member)
+        <div class="team-mate" data-id="{{ $member->id }}">
             <div class="team-mate-order">
                 <div class="team-mate-order__up"></div>
                 <div class="team-mate-order__down"></div>

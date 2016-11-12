@@ -4,7 +4,6 @@ export default class App {
     constructor () {
 
         this.setHandlers();
-        // this.initVkWidgets();
     }
 
     setHandlers() {
@@ -22,75 +21,50 @@ export default class App {
             //no pointer events
             clearTimeout(timer);
             if(!document.body.classList.contains('disable-hover')) {
-                document.body.classList.add('disable-hover')
+                document.body.classList.add('disable-hover');
             }
 
             timer = setTimeout(function(){
-                document.body.classList.remove('disable-hover')
+                document.body.classList.remove('disable-hover');
             },300);
         });
 
-        //sliders
-        // $(".slider-slides").responsiveSlides({
-        //     auto: true,
-        //     pager: true,
-        //     nav: true,
-        //     pagination: false,
-        //     fade: 500,
-        //     timeout: 4000,
-        //     namespace: "slider-controls"
-        // });
+        $('.team-mate-order__up').on('click', function (e) {
+            e.preventDefault();
+            let user1 = $(this).parents('.team-mate').data('id'),
+                user2 = $(this).parents('.team-mate').prev().data('id');
+            $.post({
+                url: `/api/user/swap`,
+                dataType: json,
+                data: {
+                    id1: user1,
+                    id2: user2
+                }
+            }).done((r) => {
+                console.log(r);
+                $(this).parents('.team-mate').insertBefore($(this).parents('.team-mate').next());
+            });
+            return false;
+        });
 
-        //masked input
-        // $('[name="phone"]').mask('999-999-99-99', {
-        //     placeholder: '#'
-        // });
-
-        //scrollTo
-
-        // $('a[href^="#"]').on('click', (e) => {
-        //     e.preventDefault();
-        //     let target = $(e.target || e.src),
-        //         scrollTarget = target.attr('href').substr(1);
-        //
-        //     if ($(scrollTarget).length) {
-        //         $('html, body').animate({
-        //             scrollTop: $(scrollTarget).offset().top
-        //         }, 500);
-        //     }
-        //     return false;
-        // });
-
-        //modals
-
+        $('.team-mate-order__down').on('click', function (e) {
+            e.preventDefault();
+            let user1 = $(this).parents('.team-mate').data('id'),
+                user2 = $(this).parents('.team-mate').next().data('id');
+            $.post({
+                url: `/api/user/swap`,
+                dataType: 'json',
+                data: {
+                    id1: user1,
+                    id2: user2
+                }
+            }).done((r) => {
+                console.log(r);
+                $(this).parents('.team-mate').insertAfter($(this).parents('.team-mate').next());
+            });
+            return false;
+        });
     }
-
-    // initVkWidgets () {
-    //     VK.init({
-    //         apiId: 5583943
-    //     });
-    //
-    //     if ($('#vk_comments').length) {
-    //         let width = $('.comments').width() - 40;
-    //
-    //         VK.Widgets.Comments("vk_comments", {
-    //             redesign: 1,
-    //             limit: 5,
-    //             width: width,
-    //             attach: "graffiti,photo"
-    //         });
-    //     }
-    //
-    //     $('.comments-repost').on('click', (e) => {
-    //         e.preventDefault();
-    //
-    //         VK.Api.call('wall.post', {
-    //             message: 'test post'
-    //         }, (r) => {
-    //             console.log(r);
-    //         });
-    //     });
-    // }
 }
 
-let app = new App;
+let app = new App();
