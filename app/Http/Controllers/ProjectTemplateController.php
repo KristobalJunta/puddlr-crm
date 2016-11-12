@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
-use App\ProjectTempate;
+use App\ProjectTemplate;
 
 class ProjectTemplateController extends Controller
 {
@@ -39,7 +39,7 @@ class ProjectTemplateController extends Controller
         $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
-        ProjectTempate::create([
+        ProjectTemplate::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'team_id' => $team->id,
@@ -59,12 +59,15 @@ class ProjectTemplateController extends Controller
         $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
-        $projectTempate = ProjectTempate::find($id);
-        if (!$projectTempate) abort(404);
+        $projectTemplate = ProjectTemplate::find($id);
+        if (!$projectTemplate) abort(404);
+
+        $user = \Auth::user();
 
         return view('template.show', [
             'team' => $team,
-            'temlate' => $projectTempate,
+            'user' => $user,
+            'template' => $projectTemplate,
         ]);
     }
 

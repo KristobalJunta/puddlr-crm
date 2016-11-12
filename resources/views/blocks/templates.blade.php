@@ -15,7 +15,7 @@
 
             <footer class="template-footer">
                 <a class="template-archive" href="">в архив</a>
-                <a class="template-open" href="">открыть шаблон</a>
+                <a class="template-open" href="/app/{{ $team->slug }}/template/{{ $template->id }}">открыть шаблон</a>
             </footer>
         </div>
     @endforeach
