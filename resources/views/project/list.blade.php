@@ -12,6 +12,7 @@
 
     <section class="main-container">
         @include('blocks.header')
+        @include('blocks.projects')
         @foreach ($projects as $project)
             <p>
                 {{ $project->name }}
