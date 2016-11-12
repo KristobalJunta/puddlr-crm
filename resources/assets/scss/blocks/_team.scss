@@ -1,0 +1,68 @@
+.team {
+    box-sizing: border-box;
+    padding: 20px;
+    background: #fff;
+
+    &-mate {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        margin-bottom: 20px;
+
+        border-radius: 7px;
+        border: 1px solid #d6d6d6;
+
+
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        font: 14px OpenSans;
+        color: #373737;
+
+
+        &-add {
+            justify-content: center;
+
+            &__text {
+                text-transform: uppercase;
+                color: $pink;
+                margin: 0 20px;
+                border-bottom: 1px dashed $pink;
+            }
+        }
+
+        &-edit {
+            background:
+                url(/img/icon_edit.png)
+                0 50%
+                no-repeat
+                transparent;
+                padding-left: 30px;
+                position: relative;
+
+            &:after {
+                content: '';
+                display: block;
+                width: calc(100% - 30px);
+                border-bottom: 1px dashed #373737;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        }
+
+        &-name {
+            display: flex;
+            align-items: center;
+
+            &__avatar {
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+        }
+    }
+}

@@ -2,6 +2,9 @@
 @import 'mixins';
 
 @import 'blocks/main-form';
+@import 'blocks/header';
+@import 'blocks/team';
+
 
 body {
     background: linear-gradient(to top right, #db695c, #f7ad37);
@@ -23,4 +26,13 @@ body {
     color: rgba(255,255,255,.2);
     text-transform: uppercase;
     margin: 0 auto;
+    user-select: none;
+}
+
+.main-container {
+    width: 900px;
+    max-width: calc(100% - 40px);
+    margin: 50px auto;
+
+    box-shadow: 0px 0px 7px rgba(0,0,0,.35);
 }
