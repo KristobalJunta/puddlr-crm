@@ -15,7 +15,7 @@
 
             <footer class="project-footer">
                 <a class="project-archive" href="">В архив</a>
-                <a class="project-open" href="">Перейти к проекту</a>
+                <a class="project-open" href="/app/{{ $team->slug }}/project/{{ $project->slug }}">Перейти к проекту</a>
             </footer>
         </div>
     @endforeach

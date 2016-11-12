@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
-use App\Status;
-
+use App\Role;
 use App\ProjectTemplate;
 
 class ProjectTemplateController extends Controller
@@ -65,12 +64,15 @@ class ProjectTemplateController extends Controller
         if (!$projectTemplate) abort(404);
 
         $user = \Auth::user();
+        $roles = Role::all()->filter(function ($role) {
+            return !($role->slug === 'admin');
+        });
 
         return view('template.show', [
             'team' => $team,
             'user' => $user,
             'template' => $projectTemplate,
-            'statuses' => Status::all()
+            'roles' => $roles,
         ]);
     }
 

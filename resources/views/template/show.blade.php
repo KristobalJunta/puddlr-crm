@@ -27,14 +27,9 @@
                     </header>
 
                     <footer class="task-footer">
-                        <div class="task-footer-user">
-                            <img src="/{{ $user->avatar }}" alt="" class="nav-link__avatar">
-                            {{ $user->name }}
-                        </div>
-
-                        <select name="" id="" class="task-footer-state">
-                            @foreach($statuses as $status)
-                                <option value="{{ $status->id }}"> {{ $status->name }}</option>
+                        <select name="role_id" id="" class="task-footer-state">
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}"> {{ $role->name }}</option>
                             @endforeach
                         </select>
 

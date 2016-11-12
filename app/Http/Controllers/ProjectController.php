@@ -145,13 +145,17 @@ class ProjectController extends Controller
             abort(404);
         }
 
+        $user = \Auth::user();
         $users = $project->project_template->team->users;
         $usersUndertime = $request->session()->get('usersUndertime', false);
 
         return view('project.show', [
             'project' => $project,
+            'team' => $team,
             'users' => $users,
+            'user' => $user,
             'usersUndertime' => $usersUndertime,
+            'statuses' => Status::all(),
         ]);
     }
 
