@@ -6,10 +6,10 @@
 
     <nav class="nav">
 
-        <a href="/app/{{ $team->slug }}/projects" class="nav-link">Проекты</a>
-        <a href="/app/{{ $team->slug }}/templates" class="nav-link">Шаблоны</a>
+        <a href="/app/{{ $team->slug }}/projects" class="nav-link @if(strstr($_SERVER['REQUEST_URI'], 'project')) active @endif">Проекты</a>
+        <a href="/app/{{ $team->slug }}/templates" class="nav-link @if(strstr($_SERVER['REQUEST_URI'], 'template')) active @endif">Шаблоны</a>
         @if($user->admin)
-            <a href="/app/{{ $team->slug }}/team" class="nav-link">Управление командой</a>
+            <a href="/app/{{ $team->slug }}/manage" class="nav-link @if(strstr($_SERVER['REQUEST_URI'], 'manage')) active @endif">Управление командой</a>
         @endif
         <a href="#" class="nav-link">
             <img src="/{{ $user->avatar }}" alt="" class="nav-link__avatar">

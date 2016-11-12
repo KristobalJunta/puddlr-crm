@@ -15,8 +15,8 @@
     <section class="main-container">
         @include('blocks.header')
 
-        <div class="task-header">
-            {{ $project->name }}
+        <div class="project-page-header">
+            <img src="/img/icon_dropdown.png" alt=""> <a href="/app/{{ $team->slug }}/projects">Проекты</a> {{ $project->name }}
         </div>
 
         <div class="tasks">

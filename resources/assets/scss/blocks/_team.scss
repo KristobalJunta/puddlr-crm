@@ -2,6 +2,8 @@
     box-sizing: border-box;
     padding: 20px;
     background: #fff;
+    border-radius: 0 0 7px 7px;
+    min-height: 520px;
 
     &-mate {
         width: 100%;
@@ -10,7 +12,8 @@
         margin-bottom: 20px;
 
         border-radius: 7px;
-        border: 1px solid #d6d6d6;
+        // border: 1px solid #d6d6d6;
+        box-shadow: 0 0 5px rgba(0,0,0,.35);
 
         display: flex;
         flex-flow: row wrap;

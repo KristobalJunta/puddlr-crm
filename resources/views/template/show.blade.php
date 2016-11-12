@@ -9,8 +9,8 @@
     <section class="main-container">
         @include('blocks.header')
 
-        <div class="task-header">
-            {{ $template->name }}
+        <div class="template-page-header">
+            <img src="/img/icon_dropdown.png" alt=""> <a href="/app/{{ $team->slug }}/templates">Шаблоны</a> / {{ $template->name }}
         </div>
 
         <div class="tasks">

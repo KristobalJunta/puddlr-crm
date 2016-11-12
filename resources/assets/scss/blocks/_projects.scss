@@ -1,12 +1,14 @@
 .projects {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     background: #fff;
 
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    border-radius: 0 0 7px 7px;
+    min-height: 520px;
 
     a {
         text-decoration: none;
@@ -20,13 +22,45 @@
 .project {
     width: 420px;
     max-width: 100%;
-
-    border-radius: 7px;
     box-shadow: 0 0 5px rgba(0,0,0,.35);
-
     background: #f0f0f0;
-
     font: 14px OpenSans;
+    margin: 10px;
+    border-radius: 7px;
+    overflow: hidden;
+
+    &-page-header {
+        background: #fff;
+        min-height: 50px;
+        line-height: 50px;
+        box-sizing: border-box;
+        padding: 0 20px;
+        margin: 0;
+        z-index: 1;
+        font-weight: lighter;
+        text-transform: uppercase;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            margin: 0 -20px;
+            background: linear-gradient(to right, #db695c, #f7ad37);
+        }
+
+        a {
+            color: inherit;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        img {
+            transform: rotate(90deg);
+        }
+    }
 
     &-header {
         background: #fff;
@@ -36,19 +70,32 @@
         border-radius: 0 0 7px 7px;
         z-index: 1;
         font-weight: 300;
+        min-height: 220px;
+    }
+
+    &-template-title {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: 'OpenSans';
     }
 
     &-title {
-        margin-top: 0;
-        text-transform: uppercase;
+        margin: 6px 0;
+        font-family: 'OpenSans';
+        font-size: 34px;
+        font-weight: normal;
     }
+
     &-name {
         text-decoration: underline;
     }
 
     &-description {
         font: 12px OpenSans;
-
+        text-align: right;
+        margin-top: 20px;
     }
 
     &-footer {
@@ -60,14 +107,17 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        min-height: 60px;
     }
+
     &-archive {
         text-transform: uppercase;
         text-decoration: none;
         color: #a7a7a7;
         margin: 0 10px;
     }
-        &-open {
+
+    &-open {
         text-transform: uppercase;
         text-decoration: none;
         color: $pink;
@@ -76,7 +126,7 @@
 }
 
 .project-add {
-    min-height: 140px;
+    min-height: 300px;
     background: #fff;
 
     display: flex;

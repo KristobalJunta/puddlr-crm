@@ -2,11 +2,14 @@
     @foreach ($projects as $project)
         <div class="project">
             <header class="project-header">
-                <h3 class="project-title">
+                <h4 class="project-template-title">
                     Шаблон:
                     <span class="project-name">
-                        {{ $project->name }}
+                        {{ $project->project_template->name }}
                     </span>
+                </h4>
+                <h3 class="project-title">
+                    {{ $project->name }}
                 </h3>
                 <div class="project-description">
                     {{ $project->description }}

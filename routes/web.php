@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'app'], function () {
         Route::get('/', 'PageController@app');
         Route::get('{team}', 'TeamController@show');
-        Route::get('{team}/team', 'TeamController@manage');
+        Route::get('{team}/manage', 'TeamController@manage');
 
         Route::get('{team}/projects', 'TeamController@projects');
         Route::get('{team}/project', 'ProjectController@show');

@@ -167,7 +167,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect("/app/{$team->slug}/team");
+        return redirect("/app/{$team->slug}/manage");
     }
 
     public function logout(Request $request)
