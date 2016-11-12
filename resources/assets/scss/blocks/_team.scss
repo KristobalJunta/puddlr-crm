@@ -5,6 +5,10 @@
     border-radius: 0 0 7px 7px;
     min-height: 520px;
 
+    a {
+        text-decoration: none;
+    }
+
     &-mate {
         width: 100%;
         box-sizing: border-box;
@@ -78,6 +82,7 @@
             &__down {
                 height: 20px;
                 width: 20px;
+                cursor: pointer;
 
                 background:
                     url(/img/arrow_gradient.png)
@@ -103,7 +108,7 @@
             }
         }
 
-        &:nth-last-of-type(2) {
+        &:last-of-type {
             .team-mate-order__down {
                 display: none;
             }
