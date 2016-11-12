@@ -100,8 +100,12 @@ class UserController extends Controller
         return redirect('/login')->with('domain', $domain);
     }
 
-    public function getLogin()
+    public function getLogin(Request $request)
     {
+        if (!$request->session()->has('domain')) {
+            return redirect('/');
+        }
+
         return view('auth.login');
     }
 
@@ -164,5 +168,11 @@ class UserController extends Controller
         Auth::login($user);
 
         return redirect("/app/{$team->slug}/team");
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

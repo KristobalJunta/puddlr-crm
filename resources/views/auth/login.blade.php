@@ -24,7 +24,7 @@
             </div>
 
             <p class="main-form__domain">
-                http://puddler.com/gorlachov
+                http://puddler.com/{{ session('domain') }}
             </p>
 
             <a href="" class="main-form__back">

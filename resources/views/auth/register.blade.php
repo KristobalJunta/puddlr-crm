@@ -8,7 +8,7 @@
     <h2 class="main-title">puddlr</h2>
 
     <div class="main-form-container">
-        <form class="main-form" role="form" method="POST" action="{{ url('/login') }}">
+        <form class="main-form" role="form" method="POST" action="{{ url('/register') }}">
             {{ csrf_field() }}
 
             <img src="/img/logo.png" alt="" class="main-form__logo">

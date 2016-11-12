@@ -20,10 +20,13 @@ Route::get('/login', 'UserController@getLogin');
 Route::post('/login', 'UserController@postLogin');
 Route::get('/register', 'UserController@getRegister');
 Route::post('/register', 'UserController@postRegister');
+Route::get('/logout', 'UserController@logout');
 
-Route::resource('project', 'ProjectController', ['only' => 'store']);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('project', 'ProjectController', ['only' => 'store']);
 
-Route::group(['prefix' => 'app'], function () {
-    Route::get('{team}', function ($team) { echo $team; });
-    Route::get('{team}/team', function ($team) { echo "$team management"; });
+    Route::group(['prefix' => 'app'], function () {
+        Route::get('{team}', function ($team) { echo $team; });
+        Route::get('{team}/team', function ($team) { echo "$team management"; });
+    });
 });
