@@ -26,7 +26,7 @@
 
             <div class="main-form-inputs main-form-inputs_team">
                 <p>http://puddler.com/</p>
-                <input type="text" class="main-form-input main-form-input_team" name="team" placeholder="team-domain">
+                <input type="text" class="main-form-input main-form-input_team" name="domain" placeholder="team-domain">
             </div>
 
             <button type="submit" class="main-form__in">

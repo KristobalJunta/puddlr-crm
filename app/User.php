@@ -21,8 +21,6 @@ class User extends Authenticatable
         'username',
         'avatar',
         'priority',
-        'user_id',
-        'team_id',
     ];
 
     /**
@@ -54,8 +52,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Quota');
     }
 
-    public function team()
+    public function teams()
     {
-        return $this->belongsTo('App\Team');
+        return $this->belongsToMany('App\Team');
     }
 }

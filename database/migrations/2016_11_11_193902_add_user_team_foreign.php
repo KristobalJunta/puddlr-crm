@@ -28,6 +28,9 @@ class AddUserTeamForeign extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropFForeign('users_team_id_foreign');
+            $table->dropColumn('team_id');
+        });
     }
 }

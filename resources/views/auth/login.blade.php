@@ -10,6 +10,7 @@
     <div class="main-form-container">
         <form class="main-form" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
+            <input type="hidden" name="domain" value="{{ session('domain') }}">
 
             <img src="/img/logo.png" alt="" class="main-form__logo">
 
