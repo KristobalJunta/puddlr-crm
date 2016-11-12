@@ -118,7 +118,7 @@ class ProjectController extends Controller
             'usersUndertime' => $usersUndertime,
         ]);
 
-        return redirect("/app/{$team->slug}/{$project->slug}");
+        return redirect("/app/{$team->slug}/project/{$project->slug}");
     }
 
     /**

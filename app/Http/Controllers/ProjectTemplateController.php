@@ -34,9 +34,18 @@ class ProjectTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($team, Request $request)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        ProjectTempate::create([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'team_id' => $team->id,
+        ]);
+
+        return redirect("/app/{$team->slug}/template/{$template->id}");
     }
 
     /**
@@ -51,7 +60,6 @@ class ProjectTemplateController extends Controller
         if (!$team) abort(404);
 
         $projectTempate = ProjectTempate::find($id);
-
         if (!$projectTempate) abort(404);
 
         return view('template.show', [
