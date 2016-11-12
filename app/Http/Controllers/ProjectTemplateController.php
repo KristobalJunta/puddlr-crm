@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Team;
+use App\ProjectTempate;
 
 class ProjectTemplateController extends Controller
 {
@@ -43,9 +45,19 @@ class ProjectTemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($team, $id, Request $request)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        $projectTempate = ProjectTempate::find($id);
+
+        if (!$projectTempate) abort(404);
+
+        return view('template.show', [
+            'team' => $team,
+            'temlate' => $projectTempate,
+        ]);
     }
 
     /**
