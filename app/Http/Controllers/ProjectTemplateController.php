@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
+use App\Status;
+
 use App\ProjectTemplate;
 
 class ProjectTemplateController extends Controller
@@ -68,6 +70,7 @@ class ProjectTemplateController extends Controller
             'team' => $team,
             'user' => $user,
             'template' => $projectTemplate,
+            'statuses' => Status::all()
         ]);
     }
 
