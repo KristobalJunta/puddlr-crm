@@ -18,19 +18,23 @@ class TaskTemplateController extends Controller
      */
     public function create($team, $template)
     {
-        //
         $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
         $projectTemplate = ProjectTemplate::find($template);
         if (!$projectTemplate) abort(404);
 
-        $roles = Role::all();
+        $roles = Role::all()->filter(function ($role) {
+            return !($role->slug === 'admin');
+        });
+
+        $user = Auth::user();
 
         return view('task-template.create', [
             'team' => $team,
-            'projectTempate' => $projectTemplate,
-            'roles' => $roles
+            'projectTemplate' => $projectTemplate,
+            'roles' => $roles,
+            'user' => $user,
         ]);
     }
 
@@ -51,7 +55,7 @@ class TaskTemplateController extends Controller
         TaskTemplate::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
-            'time_expected' => $request->get('time'),
+            'time_expected' => intval($request->get('time') * 3600),
             'role_id' => $request->get('role_id'),
             'project_template_id' => $projectTemplate->id,
         ]);
@@ -67,7 +71,6 @@ class TaskTemplateController extends Controller
      */
     public function edit($team, $template, $id)
     {
-        //
         $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
@@ -75,7 +78,9 @@ class TaskTemplateController extends Controller
         if (!$projectTemplate) abort(404);
 
         $task = TaskTemplate::find($id);
-        $roles = Role::all();
+        $roles = Role::all()->filter(function ($role) {
+            return !($role->slug === 'admin');
+        });
 
         $user = Auth::user();
 
@@ -84,7 +89,7 @@ class TaskTemplateController extends Controller
             'projectTemplate' => $projectTemplate,
             'task' => $task,
             'roles' => $roles,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -95,17 +100,18 @@ class TaskTemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, $team, $template, Request $request)
+    public function update($team, $template, $id, Request $request)
     {
-        //
-        $template = TaskTemplate::find($id);
+        $team = Team::where('slug', $team)->first();
+        $template = ProjectTemplate::find($template);
+        $taskTemplate = TaskTemplate::find($id);
 
-        $template->name = $request->get('name');
-        $template->description = $request->get('description');
-        $template->time_expected = $request->get('time');
-        $template->role_id = $request->get('role_id');
+        $taskTemplate->name = $request->get('name');
+        $taskTemplate->description = $request->get('description');
+        $taskTemplate->time_expected = intval($request->get('time') * 3600);
+        $taskTemplate->role_id = $request->get('role_id');
 
-        $template->save();
+        $taskTemplate->save();
 
         return redirect("/app/{$team->slug}/template/{$template->id}");
     }

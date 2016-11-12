@@ -39,14 +39,14 @@
                             {{ gmdate('H:i', $task->time_expected) }}
                         </div>
 
-                        <div class="team-mate-edit">
+                        <a class="team-mate-edit" href="/app/{{ $team->slug }}/template/{{ $template->id }}/task/{{ $task->id }}/edit">
                             Редактирование
-                        </div>
+                        </a>
                     </footer>
                 </div>
             @endforeach
 
-            <a href="/app/{{ $team->slug }}/project/{{ $template->id }}/create" class="task task-add">
+            <a href="/app/{{ $team->slug }}/template/{{ $template->id }}/task/create" class="task task-add">
                 <img src="/img/icon_plus.png" alt="" />
                 <p class="task-add__text">
                     новый таск

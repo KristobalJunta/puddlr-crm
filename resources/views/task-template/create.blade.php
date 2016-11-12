@@ -5,35 +5,34 @@
 @endsection
 
 @section('main')
+    @include('blocks.header')
+    <div class="task-wrap">
+        <div class="task">
+            <form action="/app/{{ $team->slug }}/template/{{ $projectTemplate->id }}/task" method="POST">
+                <input type="text"
+                    class="template-new__title"
+                    placeholder="Название таска" name="name"
+                    value="">
 
-    <div class="task">
-        <?php // TODO: fix url ?>
-        <form action="/app/{{ $team->slug }}/project/{{ $projectTemplate->id }}/" method="POST">
-            <input type="text"
-                class="template-new__title"
-                placeholder="Название таска" name="name"
-                value="">
+                <textarea rows="6" class="template-new__descr" name="description"
+                        placeholder="Описание"></textarea>
 
-            <textarea name="" id="" cols="30" rows="10"
-                class="template-new__descr" name="description"
-                    placeholder="Описание"></textarea>
+                <input type="text"
+                    class="template-new__title"
+                    placeholder="Часов на выполнение" name="time" value="">
 
-            <input type="number"
-                class="template-new__title"
-                placeholder="Часов на выполнение" name="time" value="">
+                <select class="template-new__title" name="role_id">
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    @endforeach
+                </select>
 
-            <select class="template-new__title" name="role">
-                @foreach($roles as $role)
-                    <option value="{{ $role->slug }}">{{ $role->name }}</option>
-                @endforeach
-            </select>
-
-            <button type="button" name="button">
-                Создать
-            </button>
-        </form>
+                <button type="submit">
+                    Создать
+                </button>
+            </form>
+        </div>
     </div>
-
 @endsection
 
 @section('scripts')
