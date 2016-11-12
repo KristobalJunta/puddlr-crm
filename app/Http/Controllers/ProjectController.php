@@ -7,6 +7,7 @@ use App\Project;
 use App\ProjectTemplate;
 use App\TaskTemplate;
 use App\Task;
+use App\Team;
 use App\Status;
 use App\Quota;
 
@@ -29,16 +30,20 @@ class ProjectController extends Controller
      */
     public function create($team, Request $request)
     {
-        $team = Team::where('slug', $slug)->first();
+        $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
 
         $templates = ProjectTemplate::all();
-        $users = $team->users;
+        $users = $team->users->filter(function ($user) {
+            return !$user->admin;
+        });
+        $user = \Auth::user();
 
         return view('project.create', [
             'team' => $team,
             'templates' => $templates,
             'users' => $users,
+            'user' => $user,
         ]);
     }
 
@@ -104,12 +109,12 @@ class ProjectController extends Controller
         }
 
         $users = $project->project_template->team->users;
-        $usersUndertime = $users->filter(function ($user) {
+        $usersUndertime = $users->filter(function ($user) use ($project) {
             $quota = $user->quotas()->where('project_id', $project->id)->first();
-            return $quota->time > 0;
+            return $quota && $quota->time > 0;
         });
 
-        $usersUndertime = $usersUndertime->map(function ($user) {
+        $usersUndertime = $usersUndertime->map(function ($user) use ($project) {
             $quota = $user->quotas()->where('project_id', $project->id)->first();
 
             return [
@@ -122,12 +127,6 @@ class ProjectController extends Controller
         $team = $project->project_template->team;
         $request->session()->flash('usersUndertime', $usersUndertime);
 
-        return view('project.show', [
-            'project' => $project,
-            'users' => $users,
-            'usersUndertime' => $usersUndertime,
-        ]);
-
         return redirect("/app/{$team->slug}/project/{$project->slug}");
     }
 
@@ -139,7 +138,7 @@ class ProjectController extends Controller
      */
     public function show($team, $project, Request $request)
     {
-        $team = Team::where('slug', $slug)->first();
+        $team = Team::where('slug', $team)->first();
         if (!$team) abort(404);
         $project = Project::where('slug', $project)->first();
         if (!$project) {

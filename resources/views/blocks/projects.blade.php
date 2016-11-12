@@ -21,11 +21,13 @@
     @endforeach
 
     @if($user->admin)
-        <div class="project project-add">
-            <img src="/img/icon_plus.png" alt="">
-            <div class="project-add__text">
-                Новый проект
+        <a href="/app/{{ $team->slug }}/project/create">
+            <div class="project project-add">
+                <img src="/img/icon_plus.png" alt="">
+                <div class="project-add__text">
+                    Новый проект
+                </div>
             </div>
-        </div>
+        </a>
     @endif
 </section>
