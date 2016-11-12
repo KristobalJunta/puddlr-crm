@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Team;
 use App\User;
+use App\Role;
 use Auth;
 
 class UserController extends Controller
@@ -156,6 +157,7 @@ class UserController extends Controller
         $team = Team::create([
             'slug' => $domain
         ]);
+        $role = Role::where('slug', 'admin')->first();
 
         $user = User::create([
             'name' => $request->get('name'),
@@ -163,6 +165,8 @@ class UserController extends Controller
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
             'avatar' => '/img/logo.png',
+            'role_id' => $role->id,
+            'team_id' => $team->id,
         ]);
 
         Auth::login($user);
