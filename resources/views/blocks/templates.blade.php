@@ -20,10 +20,12 @@
         </div>
     @endforeach
 
-    <div class="template template-add">
-        <img src="/img/icon_plus.png" alt="">
-        <div class="template-add__text">
-            новый шаблон
+    @if($user->admin)
+        <div class="template template-add">
+            <img src="/img/icon_plus.png" alt="">
+            <div class="template-add__text">
+                новый шаблон
+            </div>
         </div>
-    </div>
+    @endif
 </section>

@@ -34,6 +34,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getAdminAttribute()
+    {
+        return $this->role && $this->role->slug === 'admin';
+    }
+
     public function role()
     {
         return $this->belongsTo('App\Role');
