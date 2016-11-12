@@ -43,5 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{team}/template/{id}/delete', 'ProjectTemplateController@delete');
 
         Route::resource('{team}/template/{template}/task', 'TaskTemplateController');
+        Route::resource('{team}/project/{project}/task', 'TaskController');
     });
 });

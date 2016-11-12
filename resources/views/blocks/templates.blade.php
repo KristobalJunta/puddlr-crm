@@ -14,7 +14,7 @@
             </header>
 
             <footer class="template-footer">
-                <a class="template-archive" href="/app/{{ $team->slug }}/template/{{ $template->id }}/delete">В архив</a>
+                {{-- <a class="template-archive" href="/app/{{ $team->slug }}/template/{{ $template->id }}/delete">В архив</a> --}}
                 <a class="template-open" href="/app/{{ $team->slug }}/template/{{ $template->id }}">Открыть шаблон</a>
             </footer>
         </div>

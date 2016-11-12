@@ -9,7 +9,7 @@
         @include('blocks.header')
         <div class="task-wrap">
             <div class="task">
-                <form action="/app/{{ $team->slug }}/template/{{ $projectTemplate->id }}/task/{{ $task->id }}" method="POST">
+                <form action="/app/{{ $team->slug }}/project/{{ $project->slug }}/task/{{ $task->id }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH">
 
                     <input type="text"
@@ -24,13 +24,19 @@
                         class="template-new__title"
                         placeholder="Часов на выполнение" name="time" value="<?php $a = $task->time_expected ?  $task->time_expected/3600 : ''; echo $a; ?>">
 
-                    <select class="template-new__title" name="role_id">
-                        @foreach($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    <select class="template-new__title" name="user_id">
+                        @foreach($users as $member)
+                            <option value="{{ $member->id }}">{{ $member->name }} ({{ $member->role->name }})</option>
                         @endforeach
                     </select>
 
-                    <button type="submit" name="submit">
+                    <select class="template-new__title" name="status_id">
+                        @foreach($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <button type="submit">
                         Редактировать
                     </button>
                 </form>

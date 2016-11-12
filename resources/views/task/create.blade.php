@@ -9,7 +9,7 @@
         @include('blocks.header')
         <div class="task-wrap">
             <div class="task">
-                <form action="/app/{{ $team->slug }}/template/{{ $projectTemplate->id }}/task" method="POST">
+                <form action="/app/{{ $team->slug }}/project/{{ $project->slug }}/task" method="POST">
                     <input type="text"
                         class="template-new__title"
                         placeholder="Название таска" name="name"
@@ -22,9 +22,15 @@
                         class="template-new__title"
                         placeholder="Часов на выполнение" name="time" value="">
 
-                    <select class="template-new__title" name="role_id">
-                        @foreach($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    <select class="template-new__title" name="user_id">
+                        @foreach($users as $member)
+                            <option value="{{ $member->id }}">{{ $member->name }} ({{ $member->role->name }})</option>
+                        @endforeach
+                    </select>
+
+                    <select class="template-new__title" name="status_id">
+                        @foreach($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
                         @endforeach
                     </select>
 

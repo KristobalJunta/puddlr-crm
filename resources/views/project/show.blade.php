@@ -16,7 +16,7 @@
         @include('blocks.header')
 
         <div class="project-page-header">
-            <img src="/img/icon_dropdown.png" alt=""> <a href="/app/{{ $team->slug }}/projects">Проекты</a> {{ $project->name }}
+            <img src="/img/icon_dropdown.png" alt=""> <a href="/app/{{ $team->slug }}/projects">Проекты</a> / {{ $project->name }}
         </div>
 
         <div class="tasks">
@@ -44,12 +44,19 @@
                             @endforeach
                         </select>
 
-                        <div class="team-mate-edit">
+                        <a class="team-mate-edit" href="/app/{{ $team->slug }}/project/{{ $project->slug }}/task/{{ $task->id }}/edit">
                             Редактирование
-                        </div>
+                        </a>
                     </footer>
                 </div>
             @endforeach
+
+            <a href="/app/{{ $team->slug }}/project/{{ $project->id }}/task/create" class="task task-add">
+                <img src="/img/icon_plus.png" alt="" />
+                <p class="task-add__text">
+                    Новый таск
+                </p>
+            </a>
         </div>
     </section>
 @endsection
