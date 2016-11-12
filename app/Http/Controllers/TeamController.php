@@ -31,6 +31,21 @@ class TeamController extends Controller
         ]);
     }
 
+    public function templates($slug, Request $request)
+    {
+        $team = Team::where('slug', $slug)->first();
+        if (!$team) abort(404);
+
+        $templates = $team->project_templates;
+        $user = Auth::user();
+
+        return view('project.list', [
+            'team' => $team,
+            'user' => $user,
+            'templates' => $templates,
+        ]);
+    }
+
     public function manage($slug)
     {
         $team = Team::where('slug', $slug)->first();

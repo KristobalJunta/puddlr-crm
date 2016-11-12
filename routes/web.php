@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{team}', 'TeamController@show');
         Route::get('{team}/team', 'TeamController@manage');
         Route::get('{team}/projects', 'TeamController@projects');
+        Route::get('{team}/templates', 'TeamController@templates');
         Route::get('{team}/{project}', 'ProjectController@show');
     });
 });
