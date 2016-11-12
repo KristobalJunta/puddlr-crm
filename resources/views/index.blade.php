@@ -4,10 +4,6 @@
     <link rel="stylesheet" href="/css/main.min.css">
 @endsection
 
-@section('title')
-
-@endsection
-
 @section('main')
 
     <h1 class="site-title">
