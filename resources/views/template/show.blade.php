@@ -16,7 +16,6 @@
         <div class="tasks">
             @foreach ($template->task_templates as $task)
                 <div class="task">
-
                     <header class="task-header">
                         <h3 class="task-title">
                             {{ $task->name }}
@@ -27,11 +26,18 @@
                     </header>
 
                     <footer class="task-footer">
-                        <select name="role_id" id="" class="task-footer-state">
+                        {{-- <select name="role_id" id="" class="task-footer-state">
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}"> {{ $role->name }}</option>
                             @endforeach
-                        </select>
+                        </select> --}}
+                        <div class="task-role">
+                            {{ $task->role->name }}
+                        </div>
+
+                        <div class="task-time">
+                            {{ gmdate('H:i', $task->time_expected) }}
+                        </div>
 
                         <div class="team-mate-edit">
                             Редактирование
