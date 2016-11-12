@@ -5,7 +5,7 @@
                 <h3 class="template-title">
                     Шаблон:
                     <span class="template-name">
-                        {{ $tempate->name }}
+                        {{ $template->name }}
                     </span>
                 </h3>
                 <div class="template-description">

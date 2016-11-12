@@ -39,7 +39,7 @@ class TeamController extends Controller
         $templates = $team->project_templates;
         $user = Auth::user();
 
-        return view('project.list', [
+        return view('template.list', [
             'team' => $team,
             'user' => $user,
             'templates' => $templates,
