@@ -25,6 +25,10 @@ Route::get('/register', function () {
 
 Route::resource('project', 'ProjectController', ['only' => 'store']);
 
+// tmp
 Route::get('/team', function () {
     return view('team');
+});
+Route::get('/templates', function () {
+    return view('templates');
 });

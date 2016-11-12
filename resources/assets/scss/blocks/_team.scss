@@ -64,5 +64,32 @@
                 margin-right: 20px;
             }
         }
+
+        &-order {
+            display: flex;
+            flex-flow: column wrap;
+
+            &__up,
+            &__down {
+                height: 20px;
+                width: 20px;
+
+                background:
+                    url(/img/arrow_gradient.png)
+                    50% 50%
+                    no-repeat;
+
+                &.disabled {
+                    background:
+                        url(/img/arrow_gray.png)
+                        50% 50%
+                        no-repeat;
+                }
+            }
+
+            &__down {
+                transform: rotateZ(180deg);
+            }
+        }
     }
 }
