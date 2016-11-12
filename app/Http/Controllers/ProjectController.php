@@ -69,8 +69,6 @@ class ProjectController extends Controller
                 'task_template_id' => $taskTemplate->id,
             ]);
 
-            dump($task->toArray());
-
             $users = $project->project_template->team->users()
                         ->where('role_id', $taskTemplate->role_id)
                         ->orderBy('priority')
@@ -80,8 +78,6 @@ class ProjectController extends Controller
                                     ->where('project_id', $project->id)
                                     ->first()->time > 0;
                         });
-
-            dump($users->toArray());
 
             foreach ($users as $user) {
                 $quota = $user->quotas()->where('project_id', $project->id)->first();
@@ -93,15 +89,36 @@ class ProjectController extends Controller
                 $task->user_id = $user->id;
                 $task->save();
 
-
-                dump($quota->toArray());
-                dump($user->toArray());
-
                 break;
             }
         }
 
-        dd($project->tasks->toArray());
+        $users = $project->project_template->team->users;
+        $usersUndertime = $users->filter(function ($user) {
+            $quota = $user->quotas()->where('project_id', $project->id)->first();
+            return $quota->time > 0;
+        });
+
+        $usersUndertime = $usersUndertime->map(function ($user) {
+            $quota = $user->quotas()->where('project_id', $project->id)->first();
+
+            return [
+                'name' => $user->name,
+                'avatar' => $user->avatar,
+                'time' => $quota->time
+            ];
+        });
+
+        $team = $project->project_template->team;
+        $request->session()->flash('usersUndertime', $usersUndertime);
+
+        return view('project.show', [
+            'project' => $project,
+            'users' => $users,
+            'usersUndertime' => $usersUndertime,
+        ]);
+
+        return redirect("/app/{$team->slug}/{$project->slug}");
     }
 
     /**
@@ -110,9 +127,21 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($team, $project, Request $request)
     {
-        //
+        $project = Project::where('slug', $project)->first();
+        if (!$project) {
+            abort(404);
+        }
+
+        $users = $project->project_template->team->users;
+        $usersUndertime = $request->session()->get('usersUndertime', false);
+
+        return view('project.show', [
+            'project' => $project,
+            'users' => $users,
+            'usersUndertime' => $usersUndertime,
+        ]);
     }
 
     /**
