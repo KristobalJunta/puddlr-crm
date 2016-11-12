@@ -1,0 +1,30 @@
+.task {
+    width: 400px;
+    max-width: calc(100% - 40px);
+    margin: auto;
+
+    &-wrap {
+        background: #fff;
+    }
+
+    form {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column wrap;
+        align-items: center;
+    }
+
+    select {
+        background: #fff;
+    }
+
+    button {
+        background: #fff;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid $pink;
+
+        margin: 20px auto 40px;
+    }
+
+}

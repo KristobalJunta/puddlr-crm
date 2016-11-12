@@ -9,6 +9,10 @@
     <section class="main-container">
         @include('blocks.header')
         {{ $template->name }}
+
+        @foreach($template->task_templates as $task)
+            {{ $task }}
+        @endforeach
     </section>
 
 @endsection

@@ -13,6 +13,6 @@
         </button>
     </form>
 
-    
+    @include('blocks.task-template')
 
 </section>
