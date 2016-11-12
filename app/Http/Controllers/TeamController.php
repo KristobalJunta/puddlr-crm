@@ -53,7 +53,7 @@ class TeamController extends Controller
 
         $user = Auth::user();
 
-        if (!($user->role->slug === 'admin')) {
+        if (!$user->admin) {
             abort(403);
         }
 

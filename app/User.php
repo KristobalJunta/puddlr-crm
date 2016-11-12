@@ -21,6 +21,8 @@ class User extends Authenticatable
         'username',
         'avatar',
         'priority',
+        'role_id',
+        'team_id',
     ];
 
     /**
@@ -31,6 +33,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAdminAttribute()
+    {
+        return $this->role && $this->role->slug === 'admin';
+    }
 
     public function role()
     {

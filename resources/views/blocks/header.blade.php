@@ -8,7 +8,7 @@
 
         <a href="/app/{{ $team->slug }}/projects" class="nav-link">Проекты</a>
         <a href="/app/{{ $team->slug }}/templates" class="nav-link">Шаблоны</a>
-        @if($user->role->slug == 'admin')
+        @if($user->admin)
             <a href="/app/{{ $team->slug }}/team" class="nav-link">Управление командой</a>
         @endif
         <a href="#" class="nav-link">

@@ -12,7 +12,6 @@
         border-radius: 7px;
         border: 1px solid #d6d6d6;
 
-
         display: flex;
         flex-flow: row wrap;
         align-items: center;
@@ -20,7 +19,6 @@
 
         font: 14px OpenSans;
         color: #373737;
-
 
         &-add {
             justify-content: center;
@@ -89,6 +87,18 @@
 
             &__down {
                 transform: rotateZ(180deg);
+            }
+        }
+
+        &:first-of-type {
+            .team-mate-order__up {
+                display: none;
+            }
+        }
+
+        &:nth-last-of-type(2) {
+            .team-mate-order__down {
+                display: none;
             }
         }
     }

@@ -8,7 +8,7 @@
 
     <section class="main-container">
         @include('blocks.header')
-        @include('blocks.projects')
+        {{ $template->name }}
     </section>
 
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Team;
+use App\ProjectTemplate;
 
 class ProjectTemplateController extends Controller
 {
@@ -32,9 +34,18 @@ class ProjectTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($team, Request $request)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        ProjectTemplate::create([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'team_id' => $team->id,
+        ]);
+
+        return redirect("/app/{$team->slug}/template/{$template->id}");
     }
 
     /**
@@ -43,9 +54,21 @@ class ProjectTemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($team, $id, Request $request)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        $projectTemplate = ProjectTemplate::find($id);
+        if (!$projectTemplate) abort(404);
+
+        $user = \Auth::user();
+
+        return view('template.show', [
+            'team' => $team,
+            'user' => $user,
+            'template' => $projectTemplate,
+        ]);
     }
 
     /**

@@ -91,10 +91,9 @@ class UserController extends Controller
         $domain = $request->get('domain');
         $team = Team::where('slug', $domain)->first();
         if (!$team) {
-            $request->session()->flash([
-                'status' => 'err',
-                'message' => 'Команда не существует'
-            ]);
+            $request->session()->flash('status', 'err');
+            $request->session()->flash('message', 'Команда не существует');
+
             return redirect('/register');
         }
 
@@ -145,10 +144,9 @@ class UserController extends Controller
         $team = Team::where('slug', $domain)->first();
 
         if ($team) {
-            $request->session()->flash([
-                'status' => 'err',
-                'message' => 'Команда уже существует'
-            ]);
+            $request->session()->flash('status', 'err');
+            $request->session()->flash('message', 'Команда уже существует');
+
             return redirect()->back();
         }
 
@@ -176,5 +174,21 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function swapPriority(Request $request)
+    {
+        $user1 = User::find($request->get('id1'));
+        $user2 = User::find($request->get('id2'));
+
+        $t = $user1->priority;
+        $user1->priority = $user2->priority;
+        $user2->priority = $t;
+        $user1->save();
+        $user2->save();
+
+        return response()->json([
+            'status' => 'ok',
+        ]);
     }
 }

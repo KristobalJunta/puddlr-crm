@@ -1,0 +1,89 @@
+.projects {
+    box-sizing: border-box;
+    padding: 20px;
+    background: #fff;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 960px) {
+        justify-content: space-around;
+    }
+}
+
+.project {
+    width: 420px;
+    max-width: 100%;
+
+    border-radius: 7px;
+    box-shadow: 0 0 5px rgba(0,0,0,.35);
+
+    background: #f0f0f0;
+
+    font: 14px OpenSans;
+
+    &-header {
+        background: #fff;
+        min-height: 100px;
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 0 0 7px 7px;
+        z-index: 1;
+        font-weight: 300;
+    }
+
+    &-title {
+        margin-top: 0;
+        text-transform: uppercase;
+    }
+    &-name {
+        text-decoration: underline;
+    }
+
+    &-description {
+        font: 12px OpenSans;
+
+    }
+
+    &-footer {
+        padding: 10px 20px;
+        font: 16px OpenSans;
+        font-weight: bold;
+        border-radius:  0 0 7px 7px;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    &-archive {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #a7a7a7;
+        margin: 0 10px;
+    }
+        &-open {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $pink;
+        margin: 0 10px;
+    }
+}
+
+.project-add {
+    min-height: 140px;
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+
+    &__text {
+        margin-top: 30px;
+        color: $pink;
+        border-bottom: 1px dashed $pink;
+        text-transform: uppercase;
+    }
+}

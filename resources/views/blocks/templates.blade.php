@@ -15,15 +15,17 @@
 
             <footer class="template-footer">
                 <a class="template-archive" href="">в архив</a>
-                <a class="template-open" href="">открыть шаблон</a>
+                <a class="template-open" href="/app/{{ $team->slug }}/template/{{ $template->id }}">открыть шаблон</a>
             </footer>
         </div>
     @endforeach
 
-    <div class="template template-add">
-        <img src="/img/icon_plus.png" alt="">
-        <div class="template-add__text">
-            новый шаблон
+    @if($user->admin)
+        <div class="template template-add">
+            <img src="/img/icon_plus.png" alt="">
+            <div class="template-add__text">
+                новый шаблон
+            </div>
         </div>
-    </div>
+    @endif
 </section>
