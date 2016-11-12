@@ -8,6 +8,10 @@
     align-items: center;
     justify-content: space-between;
 
+    a {
+        text-decoration: none;
+    }
+
     @media (max-width: 960px) {
         justify-content: space-around;
     }
@@ -86,4 +90,47 @@
         border-bottom: 1px dashed $pink;
         text-transform: uppercase;
     }
+}
+
+.project-form {
+    background-color: #fff;
+    padding: 10px 0;
+
+    &-user {
+        width: 600px;
+        margin: 10px auto;
+    }
+
+    input,
+    select,
+    textarea {
+        display: block;
+        width: 600px;
+        margin: 0 auto;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #bbb;
+        padding: 4px 2px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    &__submit {
+        display: block;
+        outline: none;
+        border: none;
+        margin: 20px auto 0;
+        width: 120px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 4px;
+    }
+}
+
+.input-group {
+    width: 600px;
+    margin: 10px auto;
 }

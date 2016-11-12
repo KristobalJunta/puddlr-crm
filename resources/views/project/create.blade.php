@@ -8,20 +8,37 @@
 
     <section class="main-container">
         @include('blocks.header')
-        <form action="/app/{{ $team->slug }}/project">
+        <form action="/app/{{ $team->slug }}/project" method="post" class="project-form">
             {!! csrf_field() !!}
-            <select name="project_template_id">
-                @foreach ($templates as $template)
-                    <option value="{{ $template->id }}">{{ $template->name }}</option>
-                @endforeach
-            </select>
 
-            <input type="text" name="name" placeholder="Имя">
-            <textarea name="description" placeholder="Описание"></textarea>
+            <div class="input-group">
+                <lablel>Шаблон проекта</lablel>
+                <select name="project_template_id">
+                    @foreach ($templates as $template)
+                        <option value="{{ $template->id }}">{{ $template->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="">Название проекта</label>
+                <input type="text" name="name" placeholder="Название">
+            </div>
+            <div class="input-group">
+                <label for="">Описание проекта</label>
+                <textarea name="description" placeholder="Описание"></textarea>
+            </div>
 
             @foreach($users as $member)
-                <input type="text" name="quota[{{$user->id}}]" value="" placeholder="квота для {{ $user->name }}">
+                <div class="project-form-user">
+                    Квота рабочего времени для {{ $member->name }} ({{ $member->role->name }})
+                    <input type="text" name="quotas[{{ $member->id }}]" value="" placeholder="(в часах)">
+                </div>
             @endforeach
+
+            <button type="submit" class="project-form__submit">
+                Создать
+            </button>
         </form>
     </section>
 
