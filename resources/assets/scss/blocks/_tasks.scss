@@ -64,6 +64,29 @@
             padding: 0 20px;
             background: #fff;
         }
+
+        &-timer {
+            padding-left: 35px;
+            height: 30px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+
+            background: url(/img/icon_play.png) 0 50% no-repeat;
+            background-size: 30px 30px;
+
+            &.active {
+                background-image: url(/img/icon_stop.png);
+            }
+
+            &__current {
+                margin-right: 10px;
+            }
+
+            &__of {
+                margin: 0 10px;
+            }
+        }
     }
 }
 

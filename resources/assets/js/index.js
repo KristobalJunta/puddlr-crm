@@ -61,7 +61,63 @@ export default class App {
         $('.template-add').on('click', function() {
             modals.open('.modal-add');
         });
+
+
+        //timer
+        let cardTimer = false;
+        let i = 0,
+            id;
+        $('.task-footer-timer').on('click', function() {
+            let timerElement = $(this).find('.task-footer-timer__current');
+
+            if (cardTimer) {
+                window.clearInterval(cardTimer);
+                cardTimer = false;
+
+                let time = i;
+                let data = new FormData();
+                data.append('time_actual', i);
+                data.append('id', id);
+
+                this.dataset.time = i;
+
+                $.post('/api/update_time/', data);
+            } else {
+                $('.task-footer-timer').removeClass('active');
+                $(this).addClass('active');
+
+                let new_id = $(this).data('id');
+                i = parseInt(this.dataset.time);
+
+                cardTimer = window.setInterval(function() {
+                    timerElement.html(prettyTime(i));
+                    console.log(prettyTime(i));
+                    i++;
+                }, 1000);
+            }
+        });
     }
 }
 
 let app = new App();
+
+function prettyTime(seconds) {
+    let intHrs = seconds / 3600;
+    seconds = seconds % 3600;
+
+    let hrs = parseInt(intHrs).toString();
+    let mins = parseInt(seconds / 60).toString();
+    let secs = parseInt(seconds % 60).toString();
+
+    if (hrs.length < 2) {
+        hrs = 0 + hrs;
+    }
+    if (mins.length < 2) {
+        mins = 0 + mins;
+    }
+    if (secs.length < 2) {
+        secs = 0 + secs;
+    }
+
+    return `${hrs}:${mins}:${secs}`;
+}
