@@ -13,6 +13,7 @@ body {
 
     box-sizing: border-box;
     min-height: 100vh;
+    padding-top: 50px;
 
     &.disable-hover {
         pointer-events: none;
@@ -34,7 +35,7 @@ body {
 .main-container {
     width: 900px;
     max-width: calc(100% - 40px);
-    margin: 50px auto;
+    margin: auto;
 
     box-shadow: 0px 0px 7px rgba(0,0,0,.35);
 }
