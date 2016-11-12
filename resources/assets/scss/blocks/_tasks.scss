@@ -8,6 +8,8 @@
         max-width: 100%;
         width: 100%;
 
+        margin: 20px auto;
+
         &-footer {
             justify-content: space-around;
         }
@@ -36,7 +38,7 @@
 
     &-title {
         margin-top: 0;
-        text-transform: uppercase;
+        font: 22px OpenSans;
     }
     &-name {
         text-decoration: underline;
@@ -56,6 +58,16 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
+        &-state {
+            border-radius: 5px;
+            border: 1px solid darkgrey;
+
+            height: 30px;
+            box-sizing: border-box;
+            padding: 0 20px;
+            background: #fff;
+        }
     }
 
 
@@ -68,13 +80,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
 
     cursor: pointer;
+    text-decoration: none;
 
     &__text {
-        margin-top: 30px;
         color: $pink;
+        margin-left: 20px;
         border-bottom: 1px dashed $pink;
         text-transform: uppercase;
     }

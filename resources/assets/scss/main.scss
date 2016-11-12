@@ -46,3 +46,32 @@ body {
 
     box-shadow: 0px 0px 7px rgba(0,0,0,.35);
 }
+
+.project-form {
+    width: 400px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    input,
+    textarea,
+    select {
+        border: 1px solid #dc6c5a;
+        border-radius: 7px;
+        color: #dc6c5a;
+        min-height: 40px;
+        width: calc(100% - 40px);
+        padding: 5px 10px;
+        margin: 10px auto;
+    }
+
+    select {
+        margin: 10px 0;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+    }
+}
