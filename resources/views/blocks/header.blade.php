@@ -5,6 +5,7 @@
     </div>
 
     <nav class="nav">
+
         <a href="/app/{{ $team->slug }}/projects" class="nav-link">Проекты</a>
         <a href="/app/{{ $team->slug }}/templates" class="nav-link">Шаблоны</a>
         @if($user->role->slug == 'admin')
@@ -13,6 +14,7 @@
         <a href="#" class="nav-link">
             <img src="/{{ $user->avatar }}" alt="" class="nav-link__avatar">
             {{ $user->name }}
+
         </a>
         <a href="/logout" class="nav-link nav-link__logout"></a>
     </nav>

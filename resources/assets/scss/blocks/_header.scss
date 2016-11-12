@@ -66,5 +66,11 @@
                 no-repeat
                 transparent;
         }
+        &_name {
+            max-width: 175px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
 }

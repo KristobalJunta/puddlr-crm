@@ -15,6 +15,8 @@
         @include('blocks.templates')
     </section>
 
+    @include('modals.new-template')
+
 @endsection
 
 @section('scripts')

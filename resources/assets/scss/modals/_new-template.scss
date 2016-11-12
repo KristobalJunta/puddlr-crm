@@ -1,0 +1,62 @@
+.template-new {
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+
+    margin: auto;
+
+    background: #fff;
+    border-radius: 7px;
+
+    font: 14px OpenSans;
+
+    &__header {
+        text-transform: uppercase;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    &__title,
+    &__descr  {
+        border: 1px solid $pink;
+        border-radius: 7px;
+        color: $pink;
+
+        min-height: 40px;
+
+        width: calc(100% - 40px);
+        padding: 5px 10px;
+
+        margin: 10px auto;
+    }
+
+    &__buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &__button {
+        margin: 0 10px;
+        text-transform: uppercase;
+        color: #a7a7a7;
+        border: 0;
+        background: none !important;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+
+        &_ok {
+            color: $pink;
+            text-transform: uppercase;
+
+            background: transparent;
+            border: none;
+
+        }
+    }
+
+
+}

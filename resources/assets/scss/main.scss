@@ -1,11 +1,13 @@
 @import 'variables';
 @import 'mixins';
+@import 'modals/modals';
 
 @import 'blocks/main-form';
 @import 'blocks/header';
 @import 'blocks/team';
 @import 'blocks/templates';
 
+@import 'modals/new-template';
 
 
 body {
