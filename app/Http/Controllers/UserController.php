@@ -175,4 +175,20 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function swapPriority($id1, $id2)
+    {
+        $user1 = User::find($id1);
+        $user2 = User::find($id2);
+
+        $t = $user1->priority;
+        $user1->priority = $user2->priority;
+        $user2->priority = $t;
+        $user1->save();
+        $user2->save();
+
+        return response()->json([
+            'status' => 'ok',
+        ]);
+    }
 }

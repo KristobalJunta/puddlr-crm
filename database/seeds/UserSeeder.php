@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
             'avatar' => 'img/bob.jpg',
             'role_id' => $admin->id,
             'team_id' => $team->id,
+            'priority' => 1,
         ]);
 
         User::create([
@@ -39,6 +40,7 @@ class UserSeeder extends Seeder
             'avatar' => 'img/johnny.jpg',
             'role_id' => $designer->id,
             'team_id' => $team->id,
+            'priority' => 2,
         ]);
 
         User::create([
@@ -49,6 +51,7 @@ class UserSeeder extends Seeder
             'avatar' => 'img/jimmy.jpg',
             'role_id' => $frontEnd->id,
             'team_id' => $team->id,
+            'priority' => 3,
         ]);
 
         User::create([
@@ -59,6 +62,7 @@ class UserSeeder extends Seeder
             'avatar' => 'img/willy.jpg',
             'role_id' => $backEnd->id,
             'team_id' => $team->id,
+            'priority' => 4,
         ]);
     }
 }
