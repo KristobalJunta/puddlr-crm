@@ -24,3 +24,7 @@ Route::get('/register', function () {
 });
 
 Route::resource('project', 'ProjectController', ['only' => 'store']);
+
+Route::get('/team', function () {
+    return view('team');
+});

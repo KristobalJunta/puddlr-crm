@@ -37,7 +37,8 @@
         </form>
 
         <div class="main-form-footer">
-            А мы предупреждаем: Puddler вызывает зависимость...
+            Вы здесь впервые?
+            <a href="/register">Регистрация</a>
         </div>
     </div>
 
