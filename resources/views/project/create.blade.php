@@ -11,23 +11,16 @@
         <form action="/app/{{ $team->slug }}/project" method="post" class="project-form">
             {!! csrf_field() !!}
 
-            <div class="input-group">
-                <lablel>Шаблон проекта</lablel>
-                <select name="project_template_id">
-                    @foreach ($templates as $template)
-                        <option value="{{ $template->id }}">{{ $template->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <label for="">О проекте</label>
+            <input type="text" name="name" placeholder="Название">
 
-            <div class="input-group">
-                <label for="">Название проекта</label>
-                <input type="text" name="name" placeholder="Название">
-            </div>
-            <div class="input-group">
-                <label for="">Описание проекта</label>
-                <textarea name="description" placeholder="Описание"></textarea>
-            </div>
+            <textarea name="description" placeholder="Описание"></textarea>
+
+            <select name="project_template_id">
+                @foreach ($templates as $template)
+                    <option value="{{ $template->id }}">{{ $template->name }}</option>
+                @endforeach
+            </select>
 
             @foreach($users as $member)
                 <div class="project-form-user">

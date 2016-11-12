@@ -45,6 +45,13 @@
                     </footer>
                 </div>
             @endforeach
+
+            <a href="/app/{{ $team->slug }}/project/{{ $template->id }}/create" class="task task-add">
+                <img src="/img/icon_plus.png" alt="" />
+                <p class="task-add__text">
+                    новый таск
+                </p>
+            </a>
         </div>
     </section>
 

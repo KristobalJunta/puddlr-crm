@@ -1,4 +1,4 @@
-export default {
+let modals =  {
     open: function(selector) {
         let modal = $(selector);
         modal.addClass('show');
@@ -14,5 +14,8 @@ export default {
     }
 }
 
-$('.modal-close').on('click', close);
-$('.modal-bg').on('click', close);
+export default modals;
+
+$('.modal-bg, .modal-close').on('click', function() {
+    modals.close.call(this);
+});
