@@ -11,23 +11,26 @@ use Auth;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($team)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        $roles = Role::all()->filter(function ($role) {
+            return !($role->slug === 'admin');
+        });
+
+        $user = Auth::user();
+
+        return view('team.create', [
+            'roles' => $roles,
+            'team' => $team,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -36,20 +39,22 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($team, Request $request)
     {
-        //
-    }
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        User::create([
+            'name' => $request->get('name'),
+            'team_id' => $request->get('team_id'),
+            'role_id' => $request->get('role_id'),
+            'username' => str_slug($request->get('name')),
+            'avatar' => 'img/logo.png',
+            'password' => bcrypt($request->get('password')),
+            'email' => $request->get('email')
+        ]);
+
+        return redirect("/app/{$team->slug}/manage");
     }
 
     /**
@@ -58,9 +63,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($team, $id)
     {
-        //
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
+
+        $roles = Role::all()->filter(function ($role) {
+            return !($role->slug === 'admin');
+        });
+
+        $editUser = User::find($id);
+        $user = Auth::user();
+
+        return view('team.edit', [
+            'roles' => $roles,
+            'team' => $team,
+            'user' => $user,
+            'editUser' => $editUser,
+        ]);
     }
 
     /**
@@ -70,20 +90,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($team, $id, Request $request)
     {
-        //
-    }
+        $team = Team::where('slug', $team)->first();
+        if (!$team) abort(404);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->role_id = $request->get('role_id');
+
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->get('password'));
+        }
+
+        return redirect("/app/{$team->slug}/manage");
     }
 
     public function checkDomain(Request $request)

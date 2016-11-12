@@ -19,16 +19,18 @@
                 {{ $member->email }}
             </div>
 
-            <div class="team-mate-edit">
+            <a class="team-mate-edit" href="/app/{{ $team->slug }}/manage/user/{{ $member->id }}/edit">
                 Редактирование
-            </div>
+            </a>
         </div>
     @endforeach
 
-    <div class="team-mate team-mate-add">
-        <img src="/img/icon_plus.png" alt="">
-        <p class="team-mate-add__text">
-            новый тиммейт
-        </p>
-    </div>
+    <a href="/app/{{ $team->slug }}/manage/user/create">
+        <div class="team-mate team-mate-add">
+            <img src="/img/icon_plus.png" alt="">
+            <p class="team-mate-add__text">
+                новый тиммейт
+            </p>
+        </div>
+    </a>
 </section>

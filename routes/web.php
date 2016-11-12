@@ -44,5 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('{team}/template/{template}/task', 'TaskTemplateController');
         Route::resource('{team}/project/{project}/task', 'TaskController');
+        Route::resource('{team}/manage/user', 'UserController');
     });
 });
