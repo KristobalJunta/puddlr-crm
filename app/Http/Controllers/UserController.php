@@ -105,6 +105,8 @@ class UserController extends Controller
             $user->password = bcrypt($request->get('password'));
         }
 
+        $user->save();
+
         return redirect("/app/{$team->slug}/manage");
     }
 
